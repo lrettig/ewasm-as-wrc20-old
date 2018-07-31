@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "asbuild:untouched": "ewasmc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate",
+    "asbuild:optimized": "ewasmc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --noDebug",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "asbuild:debug": "node $NODE_DEBUG_OPTION node_modules/ewasm/node_modules/assemblyscript/bin/asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --lib node_modules/ewasm/assembly/lib --transform node_modules/ewasm/assembly/src/transform"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "ewasm": "github:etherts/ewasm-as",
+    "truffle": "^5.0.0-external-compiler.0"
+  }
+}
